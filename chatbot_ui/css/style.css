@@ -1,0 +1,70 @@
+body
+{
+	padding:0px 20px;
+	background-color: #EDE9E6;
+}
+
+.chatSpace {
+	height: 82%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.uChatInput {
+	width: 83%;
+	height:40px;
+	border:1px solid grey;
+	border-radius: 15px;
+	padding: 10px;
+	outline:none;
+	font-size:20px;
+	color:black;
+}
+.Sendbtn
+{
+	width: 15%;
+	height:40px;
+	border:1px solid grey;
+	border-radius: 15px;
+	padding: 2px;
+	color:white;
+	background-color: #065B54;
+	outline:none;
+	font-size:20px;
+}
+
+.chatMess
+{
+	color:black; 
+	margin:10px;
+}
+
+.msg
+{
+	border:0.15px dotted black; 
+	border-radius:10px;  
+	font-size:20px; 
+	padding:5px;
+}
+
+.grnbg
+{
+	background-color:#E2FFC7; 
+	float:right;
+}
+
+.whitbg
+{
+	background-color:white; 
+}
+
+.msgtm
+{
+	color:grey;
+	text-align:right;
+}
+
+.headprof
+{
+	font-size:30px; font-weight:700; height: 60px; background-color:#065B54; color:white; padding:0px 10px;
+}

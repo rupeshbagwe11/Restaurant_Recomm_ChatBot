@@ -1,0 +1,302 @@
+{
+  "metadata": {
+    "schemaVersion": "1.0",
+    "importType": "LEX",
+    "importFormat": "JSON"
+  },
+  "resource": {
+    "name": "RestRecBot",
+    "version": "1",
+    "intents": [
+      {
+        "name": "DiningSuggestionsIntent",
+        "version": "9",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "INTEGRATE WITH LAMBDA FUNCTION",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "Best {dscuisine} restaurants nearby",
+          "I need some restaurant suggestions",
+          "Restaurants near me",
+          "I want to eat food please suggest some good restaurants",
+          "I am hungry",
+          "top restaurants at {dslocation}",
+          "I want to book restaurant on {dsdate} at {dstime}",
+          "Need {dscuisine} food",
+          "big restaurants for group of {dsnoofpeople} people"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "dsCuisine",
+            "slotTypeVersion": "1",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Got it {dslocation}. What cuisine would you like to try?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 2,
+            "name": "dscuisine"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.DATE",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "A few more to go. What date?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 4,
+            "name": "dsdate"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.US_CITY",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Great. I can help you with that. What city or city area are you looking to dine in?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "dslocation"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.NUMBER",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Ok, how many people are in your party?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 3,
+            "name": "dsnoofpeople"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.PhoneNumber",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Great. Lastly, I need your phone number so I can send you my findings."
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 6,
+            "name": "dsphoneno"
+          },
+          {
+            "sampleUtterances": [],
+            "slotType": "AMAZON.TIME",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "What time?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 5,
+            "name": "dstime"
+          }
+        ],
+        "dialogCodeHook": {
+          "uri": "arn:aws:lambda:us-east-1:636938905002:function:LF1",
+          "messageVersion": "1.0"
+        }
+      },
+      {
+        "name": "ThankYouIntent",
+        "version": "1",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:636938905002:function:LF1",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "{thankyou}"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "thankyou",
+            "slotTypeVersion": "1",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Is there anything more you want help you with?"
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "thankyou"
+          }
+        ]
+      },
+      {
+        "name": "GreetingIntent",
+        "version": "2",
+        "fulfillmentActivity": {
+          "codeHook": {
+            "uri": "arn:aws:lambda:us-east-1:636938905002:function:LF1",
+            "messageVersion": "1.0"
+          },
+          "type": "CodeHook"
+        },
+        "sampleUtterances": [
+          "{greetings}"
+        ],
+        "slots": [
+          {
+            "sampleUtterances": [],
+            "slotType": "greetings",
+            "slotTypeVersion": "2",
+            "obfuscationSetting": "NONE",
+            "slotConstraint": "Required",
+            "valueElicitationPrompt": {
+              "messages": [
+                {
+                  "contentType": "PlainText",
+                  "content": "Sorry, we are still learning that language."
+                }
+              ],
+              "maxAttempts": 2
+            },
+            "priority": 1,
+            "name": "greetings"
+          }
+        ]
+      }
+    ],
+    "slotTypes": [
+      {
+        "description": "thankyou",
+        "name": "thankyou",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "thanks"
+          },
+          {
+            "value": "appreciate"
+          },
+          {
+            "value": "thank you"
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      },
+      {
+        "description": "greetings",
+        "name": "greetings",
+        "version": "2",
+        "enumerationValues": [
+          {
+            "value": "hi"
+          },
+          {
+            "value": "good evening"
+          },
+          {
+            "value": "good morning"
+          },
+          {
+            "value": "howdy"
+          },
+          {
+            "value": "what's up"
+          },
+          {
+            "value": "hello"
+          },
+          {
+            "value": "hola"
+          },
+          {
+            "value": "hey"
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      },
+      {
+        "description": "dsCuisine",
+        "name": "dsCuisine",
+        "version": "1",
+        "enumerationValues": [
+          {
+            "value": "american"
+          },
+          {
+            "value": "indian"
+          },
+          {
+            "value": "french"
+          }
+        ],
+        "valueSelectionStrategy": "ORIGINAL_VALUE"
+      }
+    ],
+    "voiceId": "Joanna",
+    "childDirected": false,
+    "locale": "en-US",
+    "idleSessionTTLInSeconds": 120,
+    "clarificationPrompt": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, can you please repeat that?"
+        }
+      ],
+      "maxAttempts": 5
+    },
+    "abortStatement": {
+      "messages": [
+        {
+          "contentType": "PlainText",
+          "content": "Sorry, I could not understand. Goodbye."
+        }
+      ]
+    },
+    "detectSentiment": false
+  }
+}
